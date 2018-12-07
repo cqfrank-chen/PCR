@@ -70,6 +70,7 @@ public class chatController extends HttpServlet {
 		System.out.println(command + " " + userName + " " + message);
 		System.out.println(uId);
 		System.out.println(messageTable);
+		System.out.println(memberTable);
 		switch (command) {
 		case "post":
 			try {
@@ -80,23 +81,28 @@ public class chatController extends HttpServlet {
 			}
 			break;
 		case "queryMember":
-			List<UserInfo> list = queryMember();
-
-			StringBuilder ss = new StringBuilder();
-			ss.append("[");
-			for (int i = 0; i < list.size(); i++) {
-				if (i == 0)
-					ss.append("{\"name\":" + "\"" + list.get(i).getName() + "\", \"icon\":" + "\""
-							+ list.get(i).getIcon() + "\"}");
-				else
-					ss.append(",{\"name\":" + "\"" + list.get(i).getName() + "\", \"icon\":" + "\""
-							+ list.get(i).getIcon() + "\"}");
+			List<UserInfo> list;
+			try {
+				list = pcrDbUtil.getMember(memberTable);
+				StringBuilder ss = new StringBuilder();
+				ss.append("[");
+				for (int i = 0; i < list.size(); i++) {
+					if (i == 0)
+						ss.append("{\"name\":" + "\"" + list.get(i).getName() + "\", \"icon\":" + "\""
+								+ list.get(i).getIcon() + "\"}");
+					else
+						ss.append(",{\"name\":" + "\"" + list.get(i).getName() + "\", \"icon\":" + "\""
+								+ list.get(i).getIcon() + "\"}");
+				}
+				ss.append("]");
+				String res = ss.toString();
+				JSONArray jsonArray = new JSONArray(res);
+				System.out.println(jsonArray);
+				out.print(jsonArray);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-			ss.append("]");
-			String res = ss.toString();
-			JSONArray jsonArray = new JSONArray(res);
-			System.out.println(jsonArray);
-			out.print(jsonArray);
 			break;
 		case "queryMessage":
 			try {
@@ -121,18 +127,20 @@ public class chatController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+		case "leave":
+			try {
+				pcrDbUtil.dropMember(memberTable, uId, messageTable);
+				System.out.println("success leave");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/room-list.jsp");
+				dispatcher.forward(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			break;
 		default:
 			break;
 		}
 	}
 
-
-	private List<UserInfo> queryMember() {
-		List<UserInfo> list = new ArrayList<>();
-		UserInfo user1 = new UserInfo("userName1", "icon-1", null);
-		UserInfo user2 = new UserInfo("userName2", "icon-2", null);
-		list.add(user1);
-		list.add(user2);
-		return list;
-	}
 }

@@ -29,6 +29,7 @@ html, body {
     border-style: solid;
 }
 .post {
+	margin-top: 5px;
     cursor: pointer;
     border-radius: 12px;
     height: 25px;

@@ -18,12 +18,12 @@
 <title>PCR</title>
 <script type="text/javascript" src="jquery-3.0.0.js"></script>
 <script type="text/javascript">
-	function setOn() {
-		var input = document.getElementById("post")
+	function setOn(id) {
+		var input = document.getElementById(id)
 		input.style.opacity = 1;
 	}
-	function setOut() {
-		var input = document.getElementById("post");
+	function setOut(id) {
+		var input = document.getElementById(id);
 		input.style.opacity = 0.5;
 	}
 	function postForm() {
@@ -49,37 +49,43 @@
 		});
 	}
 	function queryMessage() {
-		$
-				.ajax({
-					type : "POST",
-					url : "chatController",
-					data : $('#queryMessage').serialize(),
-					datatype : "json",
-					success : function(data) {
-						$('#contentList').empty();
-						var obj = JSON.parse(data);
-						for (var i = 0; i < obj.length; i++) {
-							var dl = $('<dl></dl>');
-							var dt = $('<dt></dt>');
-							var dd = $('<dd></dd>');
-							var dIcon = $('<div class=\"' + obj[i].icon + '\"></div>');
-							var dName = $('<div><span>' + obj[i].name
-									+ '</span></div>');
-							var dMessage = $('<div><p>' + obj[i].message
-									+ '</p></div>')
+		$.ajax({
+			type : "POST",
+			url : "chatController",
+			data : $('#queryMessage').serialize(),
+			datatype : "json",
+			success : function(data) {
 
-							dMessage.attr('class', "message");
+				$('#contentList').empty();
+				var obj = JSON.parse(data);
+				for (var i = 0; i < obj.length; i++) {
+					var dl = $('<dl></dl>');
+					var dt = $('<dt></dt>');
+					var dd = $('<dd></dd>');
+					var dIcon = $('<div class=\"' + obj[i].icon + '\"></div>');
+					var dName = $('<div><span>' + obj[i].name + '</span></div>');
+					var dMessage = $('<div><p>' + obj[i].message + '</p></div>')
 
-							dt.append(dIcon);
-							dt.append(dName);
-							dd.append(dMessage);
+					dMessage.attr('class', "message");
 
-							dl.append(dt);
-							dl.append(dd);
-							$('#contentList').append(dl);
-						}
-					}
-				});
+					dt.append(dIcon);
+					dt.append(dName);
+					dd.append(dMessage);
+
+					dl.append(dt);
+					dl.append(dd);
+					$('#contentList').append(dl);
+				}
+			}
+		});
+	}
+	function leave() {
+		//$.ajax({
+			//type : "POST",
+			//url : "chatController",
+			//data : $('#dropMember').serialize()
+		//})
+		
 	}
 </script>
 </head>
@@ -88,36 +94,38 @@
 <body>
 	<div class="zhuobu">
 		<div class="tou">
-			<form id="form" method="post">
+			<form id="form" method="post" style="display: inline-block;">
 				<input name="command" value="post" style="display: none;">
 				<div>
 					<textarea name="message" class="message" id="message"></textarea>
 				</div>
 				<div>
-					<input type="submit" value="POST!" class="post" id="post">
+					<input type="button" value="POST!" class="post" id="post" onmouseover="setOn('post')" onmouseout="setOut('post')">
+				</div>
+			</form>
+			<form action="chatController" method="post" style="display: inline-block;">
+				<div>
+					<input type="submit" name="command" value="leave" class="post" id="leave" onmouseover="setOn('leave')" onmouseout="setOut('leave')">
 				</div>
 			</form>
 		</div>
 		<div class="tail">
 			<div class="memberList">
 				<ul id="memberList" style="margin-left: 20px;">
-					<li>sdf</li>
 				</ul>
 			</div>
 			<div class="contentList" id="contentList"></div>
 		</div>
 	</div>
 
-	<input id="queryMember" name="command" value="queryMember"
-		style="display: none;">
-	<input id="queryMessage" name="command" value="queryMessage"
-		style="display: none;">
+	<input id="queryMember" name="command" value="queryMember" style="display: none;">
+	<input id="queryMessage" name="command" value="queryMessage" style="display: none;">
+	<input id="dropMember" name="command" value="leave" style="display: none;">
 	<script type="text/javascript">
 		queryMember();
 		queryMessage();
-		document.getElementById("post").onmouseover = setOn;
-		document.getElementById("post").onmouseout = setOut;
 		document.getElementById("post").onclick = postForm;
+		//document.getElementById("leave").onclick = leave;
 		document.getElementById("memberList").onclick = queryMember;
 		document.getElementById("contentList").onclick = queryMessage;
 		//window.setInterval(queryMember, 3000);
