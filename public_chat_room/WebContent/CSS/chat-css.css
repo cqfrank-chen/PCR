@@ -16,6 +16,7 @@ html, body {
     background-color: white;
     text-align: center;
     position: fixed;
+    z-index : 1;
 }
 .message {
     width: 500px;

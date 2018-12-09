@@ -67,7 +67,7 @@
 					var dMessage = $('<div><p>' + obj[i].message + '</p></div>')
 
 					dMessage.attr('class', "message");
-
+					dd.attr('style', "margin-top: 10px;");
 					dt.append(dIcon);
 					dt.append(dName);
 					dd.append(dMessage);
