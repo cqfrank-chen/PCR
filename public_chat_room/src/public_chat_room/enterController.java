@@ -39,14 +39,14 @@ public class enterController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String name = request.getParameter("userName");
 		String icon = request.getParameter("icon");
@@ -59,14 +59,14 @@ public class enterController extends HttpServlet {
 		session.setAttribute("language", language);
 		try {
 			int uId = pcrDbUtil.addUser(User);
+			session.setAttribute("userId", uId);
 			System.out.println(uId);
-			session.setAttribute("uId", uId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		request.setAttribute("USER",User);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/room-list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/roomList.jsp");
 		dispatcher.forward(request, response);
 	}
 }

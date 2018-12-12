@@ -28,7 +28,7 @@
 
 <body>
     <div class="login-logo"></div>
-    <form action="enterController" method="POST" name="loginForm">
+    <form action="enterController" method="GET" name="loginForm">
         <div class="login">
             <label for="userName">USERNAME:</label>
             <input id="userName" class="userName-input" name="userName" />

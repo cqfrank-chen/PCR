@@ -1,0 +1,541 @@
+*, :after, :before {
+	box-sizing: border-box;
+}
+
+html, div {
+	display: block;
+}
+
+html {
+	font-size: 10px;
+	-webkit-tap-highlight-color: transparent;
+}
+
+body {
+	background: #0a0a0a;
+	font-size: 16px;
+	color: #ffffff;
+	height: 100%;
+	display: block;
+	margin: 0;
+}
+
+body.scheme {
+	background-color: #000000;
+}
+
+#body {
+	padding-top: 34px;
+}
+
+.container {
+	width: 1100px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.row {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.col-sm-push-8 {
+	left: 66.66666667%;
+}
+
+.col-sm-pull-4 {
+	right: 33.33333333%;
+}
+
+.col-sm-4 {
+	width: 33.3333333%;
+}
+
+.col-sm-8 {
+	width: 66.66666667%;
+}
+
+.col-sm-12 {
+	width: 100%;
+}
+
+.col-sm-4, .col-sm-8, .col-sm-12 {
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+li, ol, ul {
+	padding: 0;
+	margin: 0;
+}
+
+.lounge-profile {
+	width: 100%;
+	border-radius: 8px;
+	margin-bottom: 15px;
+	padding-left: 0;
+	list-style: none;
+}
+
+ul {
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+}
+
+.sidebar-box.rooms-filter-wrap {
+	background: #fdfdfd;
+	padding-bottom: 0;
+}
+
+.sidebar-box {
+	font-size: 14px;
+	border: 1px solid rgba(255, 255, 255, .14);
+	padding: 10px 15px;
+	margin-bottom: 15px;
+	border-radius: 6px;
+	color: rgba(255, 255, 255, .6);
+	overflow: hidden;
+}
+
+body.scheme .sidebar-box.highlight {
+	color: #000000;
+}
+
+.sidebar-box.highlight {
+	background: #fdfdfd;
+}
+
+.sidebar-box {
+	font-size: 14px;
+	border: 1px solid rgba(255, 255, 255, .14);
+	padding: 10px 15px;
+	margin-bottom: 15px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.lounge-profile li {
+	display: block;
+	vertical-align: middle;
+}
+
+.lounge-profile li.icon #icon {
+	float: left;
+	width: 46px;
+	height: 46px;
+	background-size: 46px 46px;
+}
+
+.icon-1 {
+	background-image: url(picture/icon-1.jpg);
+}
+
+.icon-2 {
+	background-image: url(picture/icon-2.jpg);
+}
+
+.icon-3 {
+	background-image: url(picture/icon-3.jpg);
+}
+
+.icon-4 {
+	background-image: url(picture/icon-4.jpg);
+}
+
+.lounge-profile li .name {
+	font-size: 14px;
+	min-width: 50px;
+	color: #fff;
+	padding-left: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.lounge-profile li .profile-links {
+	color: rgba(255, 255, 255, .2);
+	padding-left: 56px;
+}
+
+form {
+	display: block;
+	margin-top: 0em;
+}
+
+.btn.btn-link.btn-invert {
+	color: #fff;
+}
+
+.btn.btn-link {
+	font-size: 13px;
+	border: none;
+	background: 0 0;
+	padding: 0;
+}
+
+input[type=submit] {
+	cursor: pointer;
+}
+
+.btn-link {
+	font-weight: 400;
+	border-radius: 0;
+}
+
+.btn {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	touch-action: manipulation;
+	border: 1px solid transparent;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.5;
+	border-radius: 6px;
+	user-select: none;
+	vertical-align: middle;
+}
+
+input {
+	font-family: inherit;
+	cursor: text;
+}
+
+.btn-link:hover {
+	text-decoration: underline;
+}
+
+.sidebar-box.rooms-filter-wrap {
+	background: #fdfdfd;
+	padding-bottom: 0;
+}
+
+.sidebar-box {
+	font-size: 14px;
+	border: 1px solid rgba(255, 255, 255, .14);
+	padding: 10px 15px;
+	margin-bottom: 15px;
+	border-radius: 6px;
+	color: rgba(255, 255, 255, .6);
+	overflow: hidden;
+}
+
+input[type=search] {
+	box-sizing: border-box;
+}
+
+.form-control {
+	border-width: 1px;
+}
+
+.form-control {
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	font-size: 14px;
+	line-height: 1.5;
+	display: block;
+}
+
+body.scheme .sidebar-box.rooms-filter-wrap .checkbox {
+	color: #000000;
+}
+
+.checkbox {
+	position: relative;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.checkbox label {
+	min-height: 20px;
+	padding-left: 20px;
+	margin-bottom: 0;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+label {
+	display: inline-block;
+	max-width: 100%;
+}
+
+.checkbox input[type=checkbox] {
+	position: absolute;
+	margin-left: -20px;
+}
+
+input[type=checkbox] {
+	margin: 4px 0 0;
+	line-height: normal;
+	box-sizing: border-box;
+	padding: 0;
+}
+
+body.scheme .sidebar-box.highlight {
+	color: #000000;
+}
+
+.sidebar-box.highlight {
+	background: #fdfdfd;
+}
+
+.sidebar-box ul {
+	margin-left: 16px;
+}
+
+ul, li {
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	display: list-item;
+}
+
+.wrap {
+	background: #fdfdfd;
+	padding: 16px 20px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #0a0a0a;
+	border-radius: 4px;
+	clear: both;
+}
+
+.lounge-nav {
+	height: 42px;
+	margin: 0 -20px;
+	padding: 6px 20px;
+	font-size: 14px;
+	background: #f2f2f2;
+}
+
+#create_room {
+	float: right;
+}
+
+.pull-left {
+	float: left !important;
+}
+
+input[type=submit] {
+	cursor: pointer;
+}
+
+.btn {
+	border-width: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.btn-default {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+.lounge-links {
+	color: #777;
+	line-height: 28px;
+}
+
+.lounge-counter.on {
+	visibility: visible;
+	opacity: 1;
+}
+
+.lounge-counter {
+	display: inline;
+	margin-left: 10px;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.rooms-wrap {
+	margin-top: 10px;
+}
+
+ul.rooms {
+	clear: both;
+	overflow: hidden;
+	margin: 0;
+	padding-left: 0;
+}
+
+ul.rooms li.name {
+	width: 45%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+ul.rooms li {
+	list-style-type: none;
+	display: block;
+	float: left;
+	padding: 8px 0;
+}
+
+ul.rooms li.name form {
+	display: inline;
+}
+
+ul.rooms li.name .btn-link {
+	color: #0a0a0a;
+	font-size: 1em;
+	padding: 0;
+	border: none;
+	vertical-align: baseline;
+	max-width: 100%;
+	text-align: left;
+}
+
+.btn-link {
+	color: #3e3e44;
+	font-weight: 400;
+	border-radius: 0;
+}
+
+button {
+	font-family: inherit;
+	overflow: visible;
+	margin: 0;
+}
+
+ul.rooms .room-name {
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: top;
+	display: inline-block;
+}
+
+ul.rooms li.creator {
+	width: 35%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+ul.rooms li .symbol {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	margin-right: 4px;
+	vertical-align: 1px;
+}
+
+.symbol {
+	background: #333;
+}
+
+ul.rooms li.status {
+	width: 20%;
+	text-align: right;
+	padding-top: 3px;
+	padding-bottom: 11px;
+	color: #999;
+}
+
+ul.rooms li.status .progress-bar-label {
+	display: inline-block;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+ul.rooms li.status .progress {
+	height: 2px;
+	margin-bottom: 0;
+	box-shadow: none;
+	overflow: auto;
+	min-width: 10px;
+	background: #e2e2e2;
+	float: right;
+}
+
+.progress {
+	height: 20px;
+	margin-bottom: 20px;
+	background-color: #f5f5f5;
+	border-radius: 6px;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.progress {
+	overflow: hidden;
+}
+
+ul.rooms li.status .progress .progress-bar {
+	box-shadow: none;
+}
+
+.progress-bar {
+	float: left;
+	width: 0;
+	height: 100%;
+	line-height: 20px;
+	color: #fff;
+	background-color: #3e3e44;
+	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+}
+
+.progress-bar {
+	font-size: 12px;
+	text-align: center;
+}
+
+.footer-row {
+	clear: both;
+	text-align: center;
+	padding: 5px;
+}
+
+.lounge-footer {
+	font-size: 14px;
+	margin: 20px 0;
+}
+
+.lounge-footer .small {
+	font-size: 10px;
+	opacity: .5;
+}
+
+.lounge-footer .list-inline {
+	margin-bottom: .5em;
+}
+
+.list-inline {
+	margin-left: -5px;
+}
+
+.list-inline, .list-unstyled {
+	padding-left: 0;
+	list-style: none;
+}
+
+.list-inline>li {
+	display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.btn-link {
+	cursor: pointer;
+}

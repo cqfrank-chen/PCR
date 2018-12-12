@@ -1,14 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*"%>
-<%
-	request.getSession();
-%>
-<%
-	session.setAttribute("uId", "3");
-	session.setAttribute("userName", "111");
-	session.setAttribute("messageTable", "message_test");
-	session.setAttribute("memberTable", "member_test");
-%>
 <!DOCTYPE html>
 <html>
 
@@ -28,14 +19,15 @@
 	}
 	function postForm() {
 		$.ajax({
-			type : "POST",
+			type : "GET",
 			url : "chatController",
 			data : $('#form').serialize()
 		});
+		$('#form').reset();
 	}
 	function queryMember() {
 		$.ajax({
-			type : "POST",
+			type : "GET",
 			url : "chatController",
 			data : $('#queryMember').serialize(),
 			datatype : "json",
@@ -50,7 +42,7 @@
 	}
 	function queryMessage() {
 		$.ajax({
-			type : "POST",
+			type : "GET",
 			url : "chatController",
 			data : $('#queryMessage').serialize(),
 			datatype : "json",
@@ -79,14 +71,6 @@
 			}
 		});
 	}
-	function leave() {
-		//$.ajax({
-			//type : "POST",
-			//url : "chatController",
-			//data : $('#dropMember').serialize()
-		//})
-		
-	}
 </script>
 </head>
 
@@ -94,18 +78,22 @@
 <body>
 	<div class="zhuobu">
 		<div class="tou">
-			<form id="form" method="post" style="display: inline-block;">
+			<form id="form" method="get" style="display: inline-block;">
 				<input name="command" value="post" style="display: none;">
 				<div>
 					<textarea name="message" class="message" id="message"></textarea>
 				</div>
 				<div>
-					<input type="button" value="POST!" class="post" id="post" onmouseover="setOn('post')" onmouseout="setOut('post')">
+					<input type="button" value="POST!" class="post" id="post"
+						onmouseover="setOn('post')" onmouseout="setOut('post')">
 				</div>
 			</form>
-			<form action="chatController" method="post" style="display: inline-block;">
+			<form action="chatController" method="get"
+				style="display: inline-block;">
 				<div>
-					<input type="submit" name="command" value="leave" class="post" id="leave" onmouseover="setOn('leave')" onmouseout="setOut('leave')">
+					<input type="submit" name="command" value="leave" class="post"
+						id="leave" onmouseover="setOn('leave')"
+						onmouseout="setOut('leave')">
 				</div>
 			</form>
 		</div>
@@ -118,9 +106,12 @@
 		</div>
 	</div>
 
-	<input id="queryMember" name="command" value="queryMember" style="display: none;">
-	<input id="queryMessage" name="command" value="queryMessage" style="display: none;">
-	<input id="dropMember" name="command" value="leave" style="display: none;">
+	<input id="queryMember" name="command" value="queryMember"
+		style="display: none;">
+	<input id="queryMessage" name="command" value="queryMessage"
+		style="display: none;">
+	<input id="dropMember" name="command" value="leave"
+		style="display: none;">
 	<script type="text/javascript">
 		queryMember();
 		queryMessage();
@@ -128,7 +119,8 @@
 		//document.getElementById("leave").onclick = leave;
 		document.getElementById("memberList").onclick = queryMember;
 		document.getElementById("contentList").onclick = queryMessage;
-		//window.setInterval(queryMember, 3000);
+		//window.setInterval(queryMember, 1000);
+		//window.setInterval(queryMessage, 1000);
 	</script>
 </body>
 

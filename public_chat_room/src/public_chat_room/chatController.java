@@ -46,28 +46,36 @@ public class chatController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(request, response);
+		doGet(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
+		Room theRoom = (Room) session.getAttribute("theRoom");
+		
 		String userName = (String) session.getAttribute("userName");
 		String command = request.getParameter("command");
 		String message = request.getParameter("message");
-		String messageTable = (String) session.getAttribute("messageTable");
-		String uId = (String) session.getAttribute("uId");
-		String memberTable = (String) session.getAttribute("memberTable");
+		
+		int uId = (int) session.getAttribute("userId");
+		String memberTable = null;
+		String messageTable = null;
+		if (theRoom != null) {
+			memberTable = theRoom.getRoomMeb();
+			messageTable = theRoom.getRoomMes();
+		}
+		
 		System.out.println(command + " " + userName + " " + message);
 		System.out.println(uId);
 		System.out.println(messageTable);
@@ -86,6 +94,7 @@ public class chatController extends HttpServlet {
 			try {
 				list = pcrDbUtil.getMember(memberTable);
 				StringBuilder ss = new StringBuilder();
+				System.out.println("list.size = " + list.size());
 				ss.append("[");
 				for (int i = 0; i < list.size(); i++) {
 					if (i == 0)
@@ -130,9 +139,13 @@ public class chatController extends HttpServlet {
 			break;
 		case "leave":
 			try {
-				pcrDbUtil.dropMember(memberTable, uId, messageTable);
-				System.out.println("success leave");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/room-list.jsp");
+				if (memberTable != null) {
+					pcrDbUtil.dropMember(memberTable, uId, messageTable);
+					System.out.println("success leave");
+					session.setAttribute("theRoom", null);
+					System.out.println("ssssssssssssss");
+				}
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/roomList.jsp");
 				dispatcher.forward(request, response);
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -140,6 +153,8 @@ public class chatController extends HttpServlet {
 			}
 			break;
 		default:
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/roomList.jsp");
+			dispatcher.forward(request, response);
 			break;
 		}
 	}
